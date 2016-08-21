@@ -1,32 +1,7 @@
-<div class="container">
+> Credit : 
+http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture?utm_source=webopsweekly
 
-<div class="header">
-
-<div class="logo">[![](/images/vinay.jpg)](http://www.vinaysahni.com)</div>
-
-<div class="intro">
-
-<div class="name">[Vinay Sahni](http://www.vinaysahni.com)</div>
-
-<div class="summary">Full stack developer</div>
-
-<div class="summary-separator"> · </div>
-
-<div class="summary">Founder of [Enchant](http://www.enchant.com)</div>
-
-<div class="links">[vinay@sahni.org](mailto:vinay@sahni.org)  ·  [@veesahni](http://twitter.com/veesahni)</div>
-
-</div>
-
-</div>
-
-<div class="content">
-
-<div class="time">Last updated August 16, 2016</div>
-
-<div class="post">
-
-# <a href="">Best Practices for Building a Microservice Architecture</a>
+# Best Practices for Building a Microservice Architecture
 
 <a id="top"></a>
 
@@ -334,7 +309,7 @@ For an HTTP transport protocol, this one is pretty easy. Services are expected t
 
 A good API is easy to use and understand. It provides _enough_ to get the job done without exposing underlying implementation details. It evolves with minimal impact to existing consumers. API design is as much an art as it is a science.
 
-We've already chosen HTTP as our transport protocol. To unlock the full potential of HTTP, you'll need to combine HTTP with [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). A RESTful API provides resourceful endpoints which can be operated on using verbs like GET, POST and PATCH. I've written a post on [RESTful API design](/best-practices-for-a-pragmatic-restful-api) which covers the design of public facing APIs in depth. Much of that post is also relevant to microservice API design.
+We've already chosen HTTP as our transport protocol. To unlock the full potential of HTTP, you'll need to combine HTTP with [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). A RESTful API provides resourceful endpoints which can be operated on using verbs like GET, POST and PATCH. I've written a post on [RESTful API design](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api) which covers the design of public facing APIs in depth. Much of that post is also relevant to microservice API design.
 
 **But why should service APIs be resource oriented?**
 
@@ -802,41 +777,3 @@ I've done my best to learn from those who've gone down the path of microservices
 *   [SOA without the ESB](https://www.infoq.com/presentations/soa-without-esb)
 *   [Building Microservices](http://shop.oreilly.com/product/0636920033158.do)
 *   [Microservice Architecture](http://shop.oreilly.com/product/0636920050308.do)
-
-<div class="cta" id="signup-for-updates">
-
-<div class="inner">
-
-Join 2000 Developers
-
-Learn how to build better software in the cloud.
-
-<div>
-
-<form action="http://vinaysahni.us6.list-manage.com/subscribe/post?u=005ede9b44df2622ce536ab88&amp;id=8edc074683" method="post" target="_blank"><input type="text" name="FNAME" placeholder="First Name"> <input type="text" name="EMAIL" placeholder="Email Address"> <input type="submit" value="Subscribe"></form>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="scrollbox">[x](#)
-
-<div class="message">**Join 2000 Developers**
-
-Learn how to build better software in the cloud.
-
-</div>
-
-<form action="http://vinaysahni.us6.list-manage.com/subscribe/post?u=005ede9b44df2622ce536ab88&amp;id=8edc074683" method="post" target="_blank"><input type="text" name="FNAME" placeholder="First Name"> <input type="text" name="EMAIL" placeholder="Email Address"> <input type="submit" value="Subscribe"></form>
-
-</div>
-
-</div>
-
-<div class="footer">© Vinay Sahni</div>
-
-</div>
