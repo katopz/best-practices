@@ -1,5 +1,5 @@
 > Credit : 
-http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture?utm_source=webopsweekly
+http://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture
 
 # Best Practices for Building a Microservice Architecture
 
@@ -15,14 +15,14 @@ A microservice architecture shifts around complexity. Instead of a single comple
 
 **The Platform**
 
-*   [Your platform is a set of standards combined with supporting tools](#platform)
+*   [Your platform is a set of standards combined with supporting tools](#the-platform)
 
 **Service Essentials**
 
-*   [Independently develop & deploy services](#independent)
-*   [Services should have their own private data](#private-data)
-*   [Keep Services small enough to stay focused and big enough to add value](#service-boundaries)
-*   [Store data in databases, not ephemeral service instances](#stateless)
+*   [Independently develop & deploy services](#identifying-the-key-requirements)
+*   [Services should have their own private data](#private-data-ownership)
+*   [Keep Services small enough to stay focused and big enough to add value](#identifying-service-boundaries)
+*   [Store data in databases, not ephemeral service instances](#stateless-service-instances)
 *   [Eventual consistency is your friend](#eventual-consistency)
 *   [Offload work to asynchronous workers whenever possible](#asynchronous-workers)
 *   [Keep helpful documentation for all services in a common place](#documentation)
