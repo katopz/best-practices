@@ -7,6 +7,9 @@ It's a backup of best practices I like.
 # CSS
 - [Functional CSS - The Good, The Bad, and Some Protips for React.js Users](https://github.com/chibicode/react-functional-css-protips#sunglasses-act-ii-some-downsides-of-using-functional-css-sunglasses)
 
+# Docker
+- [Docker Container Anti Patterns](docker-container-anti-patterns.md)
+
 # Backend
 - [Best Practices for Building a Microservice Architecture](best-practices-for-building-a-microservice-architecture.md)
 
