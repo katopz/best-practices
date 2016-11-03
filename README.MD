@@ -15,6 +15,7 @@ It's a backup of best practices I like.
 
 # Backend
 - [Best Practices for Building a Microservice Architecture](best-practices-for-building-a-microservice-architecture.md)
+- [Best practices for Ubuntu Setup](ubuntu-setup.md)
 
 # Test
 - [Diverse Test-Automation Frameworks For React Native Apps](https://www.smashingmagazine.com/2016/08/test-automation-frameworks-for-react-native-apps/)
