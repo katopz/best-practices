@@ -6,6 +6,7 @@ It's a backup of best practices I like.
 
 # CSS
 - [Functional CSS - The Good, The Bad, and Some Protips for React.js Users](https://github.com/chibicode/react-functional-css-protips#sunglasses-act-ii-some-downsides-of-using-functional-css-sunglasses)
+- [Delivering Octicons with SVG](https://github.com/blog/2112-delivering-octicons-with-svg)
 
 # Frontend
 - [A Study Plan To Cure JavaScript Fatigue](https://medium.com/@sachagreif/a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.dlxa08wqd)
