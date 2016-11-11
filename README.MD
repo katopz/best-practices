@@ -11,6 +11,9 @@ It's a backup of best practices I like.
 # Frontend
 - [A Study Plan To Cure JavaScript Fatigue](https://medium.com/@sachagreif/a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.dlxa08wqd)
 
+# React Native
+- [What we learned after using React Native for a year](https://hashnode.com/post/what-we-learned-after-using-react-native-for-a-year-civdr8zv6058l3853wqud7hqp)
+
 # Docker
 - [Docker Container Anti Patterns](docker-container-anti-patterns.md)
 
