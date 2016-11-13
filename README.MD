@@ -13,6 +13,7 @@ It's a backup of best practices I like.
 
 # React Native
 - [What we learned after using React Native for a year](https://hashnode.com/post/what-we-learned-after-using-react-native-for-a-year-civdr8zv6058l3853wqud7hqp)
+- [Setting up builds for different environments](https://github.com/luggit/react-native-config)
 
 # Docker
 - [Docker Container Anti Patterns](docker-container-anti-patterns.md)
