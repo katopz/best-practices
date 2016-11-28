@@ -33,4 +33,4 @@ sudo service sshd restart
 After completing this step, you've successfully transitioned your SSH daemon to only respond to SSH keys.
 
 # Initial Server Setup with Ubuntu 16.04
-Ref : https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+> Ref : https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
