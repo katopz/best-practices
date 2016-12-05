@@ -17,7 +17,7 @@ Let's take a look at some basic Node.js code for an app connection to a MongoDB 
 
 Drop a username and password in where indicated and you're ready to make connections.
     
-    
+```js
     var express = require('express');  
     var app = express();  
     var MongoClient = require('mongodb').MongoClient;  
@@ -46,7 +46,7 @@ Drop a username and password in where indicated and you're ready to make connect
         response.send('Connected - see console for a list of available collections');
       });
     });
-    
+```
 
 Here we define a simple app using `express`, and connect to a MongoDB database in our deployment using the provided connection string. We start the server running, then respond to page requests at the home page by connecting to the database and outputting a list of available collections. Then we close the connection and wait for the next request. Simple and straightforward.
 
@@ -68,7 +68,7 @@ We're going to make two changes to the way we connect to our database. Instead o
 
 Here we're using the [node-mongodb-native][6] driver, which like most available [MongoDB drivers][7] has an option that you can use to set the size of your connection pool. For this driver, it's called `poolSize`, and has a default value of 5. We can make use of the `poolsize` option by creating a database connection variable in advance, and letting the driver allocate available spaces as new connection requests come in:
     
-    
+```js
     // This is a global variable we'll use for handing the MongoDB client
     var mongodb;
     
@@ -81,11 +81,11 @@ Here we're using the [node-mongodb-native][6] driver, which like most available 
         mongodb=db;
         }
     );
-    
+```
 
 To change the size of the connection pool from the default, we can pass `poolSize` in as an option:
     
-    
+```js
     // Create the database connection
     MongoClient.connect(url, {  
       poolSize: 10
@@ -95,11 +95,11 @@ To change the size of the connection pool from the default, we can pass `poolSiz
         mongodb=db;
         }
     );
-    
+```
 
 Now we have a connection ready and waiting. To use our new connection, we just need to make use of our new global variable, `mongodb` when a request is made:
     
-    
+```js
     // Use the connect method to connect to the server when the page is requested
     app.get('/', function(request, response) {  
         mongodb.listCollections({}).toArray(function(err, collections) {
@@ -110,7 +110,7 @@ Now we have a connection ready and waiting. To use our new connection, we just n
         })
         response.send('See console for a list of available collections');
     });
-    
+```
 
 ## Anything else?
 
