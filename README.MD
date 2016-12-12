@@ -16,6 +16,7 @@ It's a backup of best practices I like.
 - [Setting up builds for different environments](https://github.com/luggit/react-native-config)
 
 # Docker
+- [Docker Cheat Sheet](https://github.com/wsargent/docker-cheat-sheet#best-practices)
 - [Docker Container Anti Patterns](docker-container-anti-patterns.md)
 
 # Backend
