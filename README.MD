@@ -19,7 +19,7 @@ It's a backup of best practices I like.
 - [Docker Cheat Sheet](https://github.com/wsargent/docker-cheat-sheet#best-practices)
 - [Docker Container Anti Patterns](docker-container-anti-patterns.md)
 - [Docker Clean](https://github.com/ZZROTDesign/docker-clean)
-- [Running Docker Containers Securely in Production](https://www.infoq.com/news/2016/12/containers-secure-production)
+- [Running Docker Containers Securely in Production](https://github.com/katopz/best-practices/blob/master/containers-secure-production.md)
 
 # Backend
 - [Best Practices for Building a Microservice Architecture](best-practices-for-building-a-microservice-architecture.md)
