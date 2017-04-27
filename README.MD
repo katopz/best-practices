@@ -20,6 +20,8 @@ It's a backup of best practices I like.
 - [Docker Container Anti Patterns](docker-container-anti-patterns.md)
 - [Docker Clean](https://github.com/ZZROTDesign/docker-clean)
 - [Running Docker Containers Securely in Production](https://github.com/katopz/best-practices/blob/master/containers-secure-production.md)
+- [Create lean Node.js image with Docker multi-stage build](https://codefresh.io/blog/node_docker_multistage/)
+- [Container Best Practice](http://docs.projectatomic.io/container-best-practices/)
 
 # Backend
 - [Best Practices for Building a Microservice Architecture](best-practices-for-building-a-microservice-architecture.md)
