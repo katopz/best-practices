@@ -232,7 +232,7 @@ Depending on your needs, you may find it practical to build a multiple aggregati
 
 **Limit the amount of business logic in an aggregation service**
 
-As aggregation services work with with data from many other services, it becomes easy to for accidentally sneak business logic into them and reduce cohesion of your services. Watch out for this! Any business logic related to a service should belong to it. Aggregation services area meant to be thin glue layers between external clients and internal services.
+As aggregation services work with data from many other services, it becomes easy to for accidentally sneak business logic into them and reduce cohesion of your services. Watch out for this! Any business logic related to a service should belong to it. Aggregation services area meant to be thin glue layers between external clients and internal services.
 
 **What if one of the internal services is down?**
 
