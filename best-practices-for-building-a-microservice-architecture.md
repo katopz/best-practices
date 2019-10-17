@@ -57,7 +57,7 @@ A microservice architecture shifts around complexity. Instead of a single comple
 *   [Either mimic prod in dev or use isolated cloud based dev environments](#development-environments)
 *   [Push working code to mainline often](#continuous-integration)
 *   [Release less, release it faster](#continuous-delivery)
-*   [Warning: shared libraries are painful to update](#shared-library-risks)
+*   [Warning: shared libraries are painful to update](#risks-of-shared-libraries)
 *   [Your service templates should cover the fundamentals out of the box](#service-templates)
 *   [Simple services are also easy to replace](#replaceability)
 
@@ -503,7 +503,7 @@ When the cost of using a service is transparent, developers are better equipped 
 
 There are a lot of little things that need to be managed when talking to other services. For example: [discovery](#service-discovery), [authentication](#authentication), [circuit breaking](#circuit-breakers), [connection pools](#connection-pools) and [timeouts](#timeouts). Rather than each team rewrite this stuff from scratch, it should be packaged up into a client library with sensible defaults.
 
-Client libraries shouldn't include any service specific business logic. It's scope should be limited to auxiliary concerns like connectivity, transport, logging and monitoring. Also, be aware of the [risks of shared libraries.](#shared-library-risks)
+Client libraries shouldn't include any service specific business logic. It's scope should be limited to auxiliary concerns like connectivity, transport, logging and monitoring. Also, be aware of the [risks of shared libraries.](#risks-of-shared-libraries)
 
 ## Development
 
