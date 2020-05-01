@@ -113,7 +113,7 @@ Within your platform, you'll be running many services. Depending on your size, _
 
 ### Service Essentials
 
-Each service should be independently developed and deployed. No coordination should be needed with other service teams if no breaking API changes have been made. Each service is effectively it's own product with it's own codebase and lifecycle.
+Each service should be independently developed and deployed. No coordination should be needed with other service teams if no breaking API changes have been made. Each service is effectively its own product with its own codebase and lifecycle.
 
 If you find the need to deploy services together, you're doing something wrong.
 If you have a single codebase for all your services, you're doing something wrong.
@@ -125,15 +125,15 @@ If you have to send out a warning before each deploy of a service, you're doing 
 
 ### Service Essentials
 
-Once multiple services are directly reading and writing the same tables in a database, any changes to those tables requires coordinated deployment of all those services services. This goes against our prime directive of service independence. Sharing data storage is a sneaky source of coupling. Each service should have it's own private data.
+Once multiple services are directly reading and writing the same tables in a database, any changes to those tables requires coordinated deployment of all those services services. This goes against our prime directive of service independence. Sharing data storage is a sneaky source of coupling. Each service should have its own private data.
 
 Private data also has the advantage of letting you to select the right database technology based on the use cases of the service.
 
-**Does each service needs it's own data server?**
+**Does each service needs its own data server?**
 
-Not necessarily. Each service needs it's own _database_, possibly colocated within a shared _data server_. The key point it that the services should have no knowledge of each other's underlying database. This way, you can start out with a shared data server and separate things out in the future with just a config change.
+Not necessarily. Each service needs its own _database_, possibly colocated within a shared _data server_. The key point it that the services should have no knowledge of each other's underlying database. This way, you can start out with a shared data server and separate things out in the future with just a config change.
 
-However, sharing a data server does have it's own complications. Firstly, it becomes a single point of failure that can take down a bunch of services together. This isn't something to take lightly. Secondly, you've also made it possible for one service to unintentionally impact others by hogging too many resources.
+However, sharing a data server does have its own complications. Firstly, it becomes a single point of failure that can take down a bunch of services together. This isn't something to take lightly. Secondly, you've also made it possible for one service to unintentionally impact others by hogging too many resources.
 
 ## Identifying Service Boundaries
 
@@ -151,14 +151,14 @@ Ideally, you understand your product and business well enough to have identified
 
 **Wait, about about shared models?**
 
-Let's dig a little deeper into bounded contexts. You want to avoid creating dumb [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) services, as that would just result in tight coupling and poor cohesion. [Domain driven design](https://en.wikipedia.org/wiki/Domain-driven_design) introduces the concept of a bounded context that can help us identify sensible service boundaries. A bounded context encapsulates related pieces of a domain together (i.e. into a service, in our case). Multiple bounded contexts communicate over well defined interfaces (i.e. the APIs, in our case). Although some models may be completely encapsulated within a bounded context, others may have different use cases (and associated attributes) spread across multiple bounded contexts. In this case, each bounded context should own it's attributes related to the model.
+Let's dig a little deeper into bounded contexts. You want to avoid creating dumb [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) services, as that would just result in tight coupling and poor cohesion. [Domain driven design](https://en.wikipedia.org/wiki/Domain-driven_design) introduces the concept of a bounded context that can help us identify sensible service boundaries. A bounded context encapsulates related pieces of a domain together (i.e. into a service, in our case). Multiple bounded contexts communicate over well defined interfaces (i.e. the APIs, in our case). Although some models may be completely encapsulated within a bounded context, others may have different use cases (and associated attributes) spread across multiple bounded contexts. In this case, each bounded context should own its attributes related to the model.
 
 This needs a concrete example. Consider [Enchant](http://www.enchant.com), a help desk solution. The core model of the system is a ticket, which represents a customer support request. The ticketing service manages the ticket lifecycle and owns primary attributes. Additionally, there's a reporting service which precalculates and stores statistics that are associated with specific tickets. There are two approaches to storing the ticket specific reporting statistics:
 
 *   Store the statistics **in the ticketing service** since it ultimately owns the ticket models and the ticket lifecycle. With this approach, the reporting service would need to talk to the ticketing service whenever it wants to do anything with the data. This tightly couples the services together and makes them extremely chatty.
 *   Store the statistics **in the reporting service** since it's responsible for reporting related data. With this approach, both services will have a ticket model, just each stores different attributes. This keeps the data close to where it's actually used. It also enables the reporting persistence to be optimized for reporting use cases. However, now the reporting service needs to get notified when a new ticket is created or when changes happen to existing tickets.
 
-Storing the statistics in the reporting service better meets the service requirements - loose coupling, high cohesion and each service responsible for it's own bounded context. However, this approach adds some complexity. The reporting service needs to be notified about changes to tickets. This is accomplished by having the reporting service subscribe to an event stream coming out of the ticketing service, keeping coupling between the services to a minimum.
+Storing the statistics in the reporting service better meets the service requirements - loose coupling, high cohesion and each service responsible for its own bounded context. However, this approach adds some complexity. The reporting service needs to be notified about changes to tickets. This is accomplished by having the reporting service subscribe to an event stream coming out of the ticketing service, keeping coupling between the services to a minimum.
 
 **But how big can a service be?**
 
@@ -204,7 +204,7 @@ I mentioned that jobs can be retried when they fail. The challenge with automati
 
 ### Service Essentials
 
-A service (and it's API) is only as good as it's documentation. It's critical to have clear and easy to approach usage documentation for each service. Ideally, usage documentation for all services should be in a common place. Service teams shouldn't have to think too hard about where documentation is for a service they're using.
+A service (and its API) is only as good as its documentation. It's critical to have clear and easy to approach usage documentation for each service. Ideally, usage documentation for all services should be in a common place. Service teams shouldn't have to think too hard about where documentation is for a service they're using.
 
 **What should happen when the API changes?**
 
@@ -248,7 +248,7 @@ The nature of an aggregation service is that it's dependent on (and deeply coupl
 
 ### Service Essentials
 
-Consider the security needs of a service based on the data it's housing or it's role in the grand scheme of things. You may need data security in transit or at rest. You may need network security at the service perimeter or at the perimeter of your private network. Good security is hard. Here are some principles worth thinking about:
+Consider the security needs of a service based on the data it's housing or its role in the grand scheme of things. You may need data security in transit or at rest. You may need network security at the service perimeter or at the perimeter of your private network. Good security is hard. Here are some principles worth thinking about:
 
 *   **Layer your security**: Also known as [defence in depth](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)). Rather than assuming a network perimeter firewall is _good enough_, continue to add multiple layers of security _where it matters most_. This adds redundancy to your security and also helps slow down an attacker when one layer of security fails or a vulnerability is identified.
 *   **Use automatic security updates**: In many cases, the benefit of automatic security updates outweighs the possibility of a service failure as a result of it. Combine automatic updates with automated testing, and you'll be able to roll out security updates with much higher confidence.
@@ -275,7 +275,7 @@ That said, if you've achieved enough scale where saving internal transport overh
 
 For **asynchronous communications**, we'll need to implement the [publish subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) pattern. There are two major approaches here:
 
-*   Use a **message broker**: All services push events to the broker. Other services subscribe to the events they need. In this scenario, the message broker defines it's own transport protocol. Since a centralized broker can easily become a single point of failure, it's important to ensure such a system is fault tolerant and horizontally scalable.
+*   Use a **message broker**: All services push events to the broker. Other services subscribe to the events they need. In this scenario, the message broker defines its own transport protocol. Since a centralized broker can easily become a single point of failure, it's important to ensure such a system is fault tolerant and horizontally scalable.
 *   Use **webhooks delivered by the services**: A service exposes an endpoint from which other services can subscribe to events. It delivers those events as [webhooks](https://en.wikipedia.org/wiki/Webhook) (i.e. an HTTP POST with a serialized message in the body) to a target destination provided at time of subscription. Such webhook deliveries should be sent by [asynchronous workers](#asynchronous-workers) that the service manages. This approach avoids introducing a single point of failure and is inherently horizontally scalable. This functionality can be built right into a [service template](#service-templates).
 
 **What about an Enterprise Service Bus (ESB) or a messaging fabric?**
@@ -353,9 +353,9 @@ There are two main approaches for implementing complex workflows where multiple 
 
 With **a centralized orchestrator**, a process coordinates with multiple services to complete a larger workflow. The services have no knowledge of the workflow or their specific involvement in it. The orchestrator takes care of the complexities. For example, enforcing the order in which services complete their work or retrying if a request to a service fails. To ensure the orchestrator knows what's going on, communications tend to be synchronous. The challenge with an orchestrator is that business logic will build up in a central place.
 
-With **decentralized interactions**, each service takes full responsibility for its role in the greater workflow. It will listen for events from other services, complete it's work as soon as possible, retry if a failure occurs and send out events upon completion. Here, communications tend to be asynchronous and business logic stays within the related services. The challenge with this approach is tracking progress of the workflow as a whole.
+With **decentralized interactions**, each service takes full responsibility for its role in the greater workflow. It will listen for events from other services, complete its work as soon as possible, retry if a failure occurs and send out events upon completion. Here, communications tend to be asynchronous and business logic stays within the related services. The challenge with this approach is tracking progress of the workflow as a whole.
 
-Decentralized interactions meet our requirements better: loose coupling, high cohestion and each service responsible for it's own bounded context. All of this ultimately improves team autonomy. A service that monitors events coming out of all the coordinating services can passively track the state of the workflow as a whole.
+Decentralized interactions meet our requirements better: loose coupling, high cohestion and each service responsible for its own bounded context. All of this ultimately improves team autonomy. A service that monitors events coming out of all the coordinating services can passively track the state of the workflow as a whole.
 
 ## Versioning
 
@@ -367,7 +367,7 @@ That said, maintaining old versions indefinitely can be challenging. Old version
 
 **How about maintaining multiple versions as separate services?**
 
-Although this sounds like a good idea, it really isn't. An entirely new service also comes with it's own overhead. You'll have more things to monitor and more things that can fail. Bugs found in old versions will likely need to be fixed in new versions too.
+Although this sounds like a good idea, it really isn't. An entirely new service also comes with its own overhead. You'll have more things to monitor and more things that can fail. Bugs found in old versions will likely need to be fixed in new versions too.
 
 It gets even more complicated if all versions of the service need a shared view of the underlying data. You could have them all talking to the same database, but that would be another bad idea! They would all be strongly coupled to the persistence schema. Any changes to the schema in any version can cause unintended breakage in other versions. You end up having to keep multiple code bases in sync.
 
@@ -379,7 +379,7 @@ All supported versions should co-exist in the same codebase and the same service
 
 ### Service Interactions
 
-A service that fails cleanly and quickly is better than one that's slowing everybody down because it's overloaded. All types of requests should have consumer specific limits in place. You'll also need a way to increase the limits for specific consumers as needed. This ensures stability of a service as it's team will have an opportunity to plan for large usage increases.
+A service that fails cleanly and quickly is better than one that's slowing everybody down because it's overloaded. All types of requests should have consumer specific limits in place. You'll also need a way to increase the limits for specific consumers as needed. This ensures stability of a service as its team will have an opportunity to plan for large usage increases.
 
 While such limits are most important for services that can't rapidly auto-scale, it's still a good idea for those that can. You don't want to be learning about the limits of your design decisions by surprise! That said, limits for auto-scaling services can be quite liberal.
 
@@ -429,7 +429,7 @@ Circuit breaking logic should be wrapped up in a [client library](#client-librar
 
 ### Service Interactions
 
-A single user request can result in activity occurring across many services, which makes things difficult when trying to debug the impact of a specific request. One way to make things simpler is to include a correlation ID in service requests. A correlation ID is a unique identifier for the originating request that is passed by each service to any downstream requests. When combined with a [centralized logging](#logging) layer, this makes it really easy to see a request make it's way through your infrastructure.
+A single user request can result in activity occurring across many services, which makes things difficult when trying to debug the impact of a specific request. One way to make things simpler is to include a correlation ID in service requests. A correlation ID is a unique identifier for the originating request that is passed by each service to any downstream requests. When combined with a [centralized logging](#logging) layer, this makes it really easy to see a request make its way through your infrastructure.
 
 The IDs are generated by either user facing [aggregation service](#aggregation-services) or by any service that needs to make a request that's not an immediate side effect of an incoming request. Any sufficiently random string (like a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) would do the trick.
 
@@ -493,7 +493,7 @@ As an added bonus: when you can make universal assumptions about how services co
 
 When a team is using a service provided by another team, they tend to assume it's free. While it may be free for them to use, there are real costs to the other team and to the organization. In order to make effective use of the available resources, teams need to understand the cost of a service.
 
-One powerful way to pull this off is to have services invoice other services for usage. Not using a made up points system. Invoice using real cash. A service should pass on the cost of development and operations to it's consumers. The true cost of a service includes development costs, infrastructure costs, and costs to use other services. This can all be flattened into a simple per-request price that's adjusted periodically (once or twice a year) as request volumes and costs change.
+One powerful way to pull this off is to have services invoice other services for usage. Not using a made up points system. Invoice using real cash. A service should pass on the cost of development and operations to its consumers. The true cost of a service includes development costs, infrastructure costs, and costs to use other services. This can all be flattened into a simple per-request price that's adjusted periodically (once or twice a year) as request volumes and costs change.
 
 When the cost of using a service is transparent, developers are better equipped to see what's right for their service and the organization.
 
@@ -503,7 +503,7 @@ When the cost of using a service is transparent, developers are better equipped 
 
 There are a lot of little things that need to be managed when talking to other services. For example: [discovery](#service-discovery), [authentication](#authentication), [circuit breaking](#circuit-breakers), [connection pools](#connection-pools) and [timeouts](#timeouts). Rather than each team rewrite this stuff from scratch, it should be packaged up into a client library with sensible defaults.
 
-Client libraries shouldn't include any service specific business logic. It's scope should be limited to auxiliary concerns like connectivity, transport, logging and monitoring. Also, be aware of the [risks of shared libraries.](#risks-of-shared-libraries)
+Client libraries shouldn't include any service specific business logic. Its scope should be limited to auxiliary concerns like connectivity, transport, logging and monitoring. Also, be aware of the [risks of shared libraries.](#risks-of-shared-libraries)
 
 ## Development
 
@@ -511,7 +511,7 @@ Client libraries shouldn't include any service specific business logic. It's sco
 
 ### Development
 
-Each service should have it's own repository. This keeps checkouts small, source control logs clean and enables granular access control. You're [not deploying services together](#independent) and shouldn't be colocating their code either.
+Each service should have its own repository. This keeps checkouts small, source control logs clean and enables granular access control. You're [not deploying services together](#independent) and shouldn't be colocating their code either.
 
 Additionally, standardize on a source control technology. This will keep things simple for your teams and make your [continuous integration](#continuous-integration) and [continuous delivery](#continuous-delivery) efforts easier.
 
@@ -727,7 +727,7 @@ It's definitely possible to provide a database system with persistent storage an
 
 **What about having multiple services just share the systems?**
 
-This works as long as you take care to ensure that each service isn't aware of another service's configuration or data. For example, multiple services could share a common data server, each with their own database. They have no knowledge of any other databases on the shared data server. When a particular service needs to scale faster than the others, it's database can be extracted into a dedicated data server.
+This works as long as you take care to ensure that each service isn't aware of another service's configuration or data. For example, multiple services could share a common data server, each with their own database. They have no knowledge of any other databases on the shared data server. When a particular service needs to scale faster than the others, its database can be extracted into a dedicated data server.
 
 The caveat with this approach, however, is that shared resources can be harder to independently isolate and monitor. For example, in a shared data server, it may be possible for one service to use an excessive amount of resources and unknowingly impact the performance of other services. If monitoring weren't granular enough, it would also take time to identify the problematic service.
 
